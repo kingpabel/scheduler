@@ -82,7 +82,7 @@ class UserController extends Controller
             endif;
         }else {
             $data['menu'] = 'Setting';
-            return view('User.setting', $data);
+            return view('User.updateInfo', $data);
         }
     }
 
