@@ -3,12 +3,12 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                User Setting
+                Update Info
             </h1>
             <ol class="breadcrumb">
                 <li class="active">
                     <a style="text-decoration: none" href="{!! URL::to('/') !!}"> Dashboard</a> /
-                    <a style="text-decoration: none" href="{!! URL::to('user/setting') !!}"> Setting</a>
+                    <a style="text-decoration: none" href="{!! URL::to('user/update-info') !!}"> Update Info</a>
                 </li>
             </ol>
         </div>
@@ -18,7 +18,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> User Setting</h3>
+                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> Update Info</h3>
                 </div>
                 <div class="panel-body">
                     {!! Form::open(array('id' => 'settings', 'accept-charset' => 'utf-8', 'class' => 'form-horizontal', 'method' => 'post', 'ng-submit' => 'update($event)')) !!}
@@ -84,7 +84,7 @@
                         if (response == 'true') {
                             $.pnotify({
                                 title: 'Message',
-                                text: 'Settings Updated Successfully',
+                                text: 'Information Update Successfully',
                                 type: 'success',
                                 delay: 3000
                             });
