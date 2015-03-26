@@ -50,7 +50,7 @@
         $(function(){
             $(".input").bind("keyup blur",function() {
                 var $th = $(this);
-                $th.val( $th.val().replace(/[^A-z0-9,#. _@-]/g, function(str) { return ''; } ) );
+                $th.val( $th.val().replace(/[^A-z0-9,. _-]/g, function(str) { return ''; } ) );
             });
         })
         $(function(){

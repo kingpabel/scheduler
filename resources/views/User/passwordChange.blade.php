@@ -32,13 +32,13 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">New Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" name="new_password" required placeholder="New Password" style="width: 60%">
+                            <input type="password" class="form-control" id="new_password" name="new_password" required placeholder="New Password" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Confirm Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" name="confirm_password" required placeholder="Confirm Password" style="width: 60%">
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required placeholder="Confirm Password" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">
@@ -61,6 +61,16 @@
         event.controller('settingController',function($scope,$http){
             $scope.update = function(event){
                 event.preventDefault();
+                $.pnotify.defaults.styling = "bootstrap3";
+                if($("#new_password").val() != $("#confirm_password").val()){
+                    $.pnotify({
+                        title: 'ERROR',
+                        text: 'New Password and Confirm Password are Not Matched',
+                        type: 'error',
+                        delay: 3000
+                    });
+                    return false
+                }
                 var req = {
                     method : 'POST',
                     url : "{!! URL::to('user/password-change') !!}",
@@ -68,7 +78,6 @@
                     data: $("#passwordChange").serialize()
                 };
                 $http(req).success(function (response) {
-                    $.pnotify.defaults.styling = "bootstrap3";
                     if (response == 'true') {
                         $.pnotify({
                             title: 'Message',

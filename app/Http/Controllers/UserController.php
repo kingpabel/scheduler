@@ -61,10 +61,10 @@ class UserController extends Controller
         if(Input::all()){
             $id = Input::get('id');
             $rules = array(
-                'first_name' => 'required',
+                'first_name' => 'required|alpha_num_spaces',
                 'last_name' => 'required',
                 'email' => "required|email|unique:users,email,$id",
-                'phone' => 'required',
+                'phone' => 'required|phone_number',
             );
             /* Laravel Validator Rules Apply */
             $validator = Validator::make(Input::all(), $rules);

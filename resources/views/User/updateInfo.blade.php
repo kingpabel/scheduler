@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Update Info
+                Update Information
             </h1>
             <ol class="breadcrumb">
                 <li class="active">
@@ -18,7 +18,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> Update Info</h3>
+                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> Update Information</h3>
                 </div>
                 <div class="panel-body">
                     {!! Form::open(array('id' => 'settings', 'accept-charset' => 'utf-8', 'class' => 'form-horizontal', 'method' => 'post', 'ng-submit' => 'update($event)')) !!}

@@ -11,6 +11,7 @@ class ValidatorExtended extends IlluminateValidator {
     private $_custom_messages = array(
         "alpha_dash_spaces" => "The :attribute may only contain letters, spaces, and dashes.",
         "alpha_num_spaces" => "The :attribute may only contain letters, numbers, and spaces.",
+        "phone_number" => "The :attribute may only contain numbers,dash.",
         "password_check" => "The :attribute is Not Matched",
     );
 
@@ -49,8 +50,13 @@ class ValidatorExtended extends IlluminateValidator {
      * @return bool
      */
     protected function validateAlphaNumSpaces( $attribute, $value ) {
-        return (bool) preg_match( "/^[A-Za-z0-9\s]+$/", $value );
+        return (bool) preg_match( "/^[A-Za-z0-9\s-.-_ ]+$/", $value );
     }
+
+    protected function validatePhoneNumber( $attribute, $value ) {
+        return (bool) preg_match( "/^[0-9\s-.-]+$/", $value );
+    }
+
     protected function validatePasswordCheck( $attribute, $value ) {
         return Hash::check($value, Auth::user()->getAuthPassword());
     }
