@@ -98,7 +98,7 @@ class UserController extends Controller
             $id = Input::get('id');
             $rules = array(
                 'first_name' => 'required|alpha_num_spaces',
-                'last_name' => 'required',
+                'last_name' => 'required|alpha_num_spaces',
                 'email' => "required|email|unique:users,email,$id",
                 'phone' => 'required|phone_number',
             );

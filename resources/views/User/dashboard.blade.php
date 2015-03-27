@@ -39,6 +39,20 @@
                 </div>
             </div>
             <!-- /.row -->
-
+@endsection
+@section('asset')
+    @if(Session::get('success'))
+        <script type="text/javascript" language="javascript" class="init">
+            $(document).ready(function() {
+                $.pnotify.defaults.styling = "bootstrap3";
+                $.pnotify({
+                    title: 'Message',
+                    text: "{!! Session::get('success') !!}",
+                    type: 'success',
+                    delay: 3000
+                });
+            });
+        </script>
+    @endif
 @endsection
 
