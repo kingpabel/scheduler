@@ -14,6 +14,12 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-lg-12">
+          <a href="{!! URL::to('user/create-event') !!}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> Create Event</a>
+        </div>
+    </div>
+    <br/>
     <!-- /.row -->
     <div class="row" ng-app="event" ng-controller="eventDeleteController">
         <div class="col-lg-12">

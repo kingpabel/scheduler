@@ -31,6 +31,42 @@ class UserController extends Controller
         return view('User.event', $data);
     }
 
+    public  function anyCreateEvent(){
+        if(Input::all()){
+            $rules = array(
+                'title' => 'required',
+                'start' => 'required|date_format:Y-m-d H:i',
+                'end' => 'required|date_format:Y-m-d H:i',
+            );
+            /* Laravel Validator Rules Apply */
+            $validator = Validator::make(Input::all(), $rules);
+            if ($validator->fails()):
+                return $validator->messages()->first();
+            else:
+                if (Input::get('start') > Input::get('end'))
+                    return 'Start Time Can not be Greater Than End Time';
+                if (Input::get('start') == Input::get('end'))
+                    return 'Start Time And End Time Can not be Same';
+                $duplicate = Schedule::where('start_time', Input::get('start'))
+                    ->where('end_time', Input::get('end'))
+                    ->first();
+                if ($duplicate) {
+                    return 'A Event is Already Created in This Time';
+                }
+                $event = new Schedule();
+                $event->title = Input::get('title');
+                $event->start_time = Input::get('start');
+                $event->end_time = Input::get('end');
+                $event->user_id = Auth::user()->id;
+                $event->save();
+                Session::flash('success', 'Event Created Successfully');
+                return 'true';
+            endif;
+        }else {
+            $data['menu'] = 'Create Event';
+            return view('User.createEvent', $data);
+        }
+    }
     public function anyPasswordChange()
     {
         if(Input::all()){
@@ -179,6 +215,12 @@ class UserController extends Controller
                 $response['data'] = 'Start Time Can not be Greater Than End Time';
                 return Response::json($response);
             }
+            if (Input::get('start') == Input::get('end')) {
+                $response['type'] = 'error';
+                $response['data'] = 'Start Time And End Time Can not be Same';
+                return Response::json($response);
+            }
+
             $duplicate = Schedule::where('start_time', Input::get('start'))
                 ->where('end_time', Input::get('end'))
                 ->first();
@@ -213,6 +255,8 @@ class UserController extends Controller
         else:
             if (Input::get('start') > Input::get('end'))
                 return 'Start Time Can not be Greater Than End Time';
+            if (Input::get('start') == Input::get('end'))
+                return 'Start Time And End Time Can not be Same';
             $duplicate = Schedule::where('start_time', Input::get('start'))
                 ->where('end_time', Input::get('end'))
                 ->where('id', '!=', Input::get('id'))
@@ -276,6 +320,8 @@ class UserController extends Controller
             else:
                 if(Input::get('start') > Input::get('end'))
                     return 'Start Time Can not be Greater Than End Time';
+                if (Input::get('start') == Input::get('end'))
+                    return 'Start Time And End Time Can not be Same';
                 $duplicate = Schedule::where('start_time', Input::get('start'))
                     ->where('end_time', Input::get('end'))
                     ->where('id', '!=', Input::get('id'))

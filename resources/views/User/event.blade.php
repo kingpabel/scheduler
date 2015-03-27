@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Event
+           My Event
         </h1>
         <ol class="breadcrumb">
             <li class="active">
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" id="saveCalender" class="btn btn-default">Save</button>
+                <button type="button" id="saveCalender" class="btn btn-default"><i class="fa fa-fw fa-plus"></i> Create</button>
             </div>
         </div>
     </form>
@@ -82,7 +82,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" id="updateEvent" class="btn btn-default">Update</button>
+                <button type="button" id="updateEvent" class="btn btn-default"><i class="fa fa-fw fa-edit"></i> Update</button>
             </div>
         </div>
     </form>

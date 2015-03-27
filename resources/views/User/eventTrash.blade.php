@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-lg-12">
             <a href="{!! URL::to('user/event-all-restore') !!}" class="btn btn-success">Restore All Trash</a>
-            <a href="{!! URL::to('user/event-all-delete') !!}" class="btn btn-success btn-large">Delete All Trash</a>
+            <a href="{!! URL::to('user/event-all-delete') !!}" class="btn btn-danger btn-large">Delete All Trash</a>
         </div>
     </div>
 <br/>
@@ -46,7 +46,7 @@
                                 <td>{!! $event->start_time !!}</td>
                                 <td>{!! $event->end_time !!}</td>
                                 <td>
-                                    <a class="btn btn-danger delete" ng-click="restore({!! $event->id !!})" ><i class="fa fa-fw fa-trash-o"></i>Restore</a>
+                                    <a class="btn btn-success delete" ng-click="restore({!! $event->id !!})" ><i class="fa fa-fw fa-reply"></i>Restore</a>
                                     <a class="btn btn-danger delete" ng-click="delete({!! $event->id !!})" ><i class="fa fa-fw fa-trash-o"></i>Delete</a>
                                 </td>
                             </tr>

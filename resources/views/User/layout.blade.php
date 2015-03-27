@@ -104,13 +104,16 @@
                         <a class="@if($menu == 'Event') active @endif" href="{!! URL::to('user/event') !!}"><i class="fa fa-fw fa-th"></i> Event</a>
                     </li>
                     <li>
+                        <a class="@if($menu == 'Create Event') active @endif" href="{!! URL::to('user/create-event') !!}"><i class="fa fa-fw fa-plus"></i>Create Event</a>
+                    </li>
+                    <li>
                         <a class="@if($menu == 'Table') active @endif" href="{!! URL::to('user/table-event') !!}"><i class="fa fa-fw fa-table"></i>Table Event</a>
                     </li>
                     <li>
                         <a class="@if($menu == 'Trash') active @endif" href="{!! URL::to('user/event-trash') !!}"><i class="fa fa-fw fa-trash-o"></i>Trash</a>
                     </li>
                     <li>
-                        <a class="@if($menu == 'Setting') active @endif" href="#"><i class="fa fa-fw fa-edit"></i> Setting<span class="fa arrow"></span></a>
+                        <a class="@if($menu == 'Setting') active @endif" href="#"><i class="fa fa-fw fa-wrench"></i> Setting<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{!! URL::to('user/update-info') !!}">Update Info</a>
