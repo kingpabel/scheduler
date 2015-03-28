@@ -25,14 +25,23 @@ class UserController extends Controller
         $data['lastMonthEvent'] = Schedule::where('start_time', '>=', date("Y-$latMonth-01"))
             ->where('start_time', '<=', date("Y-$latMonth-t"))
             ->count();
+
         $data['nextMonthEvent'] = Schedule::where('start_time', '>=', date("Y-$nextMonth-01"))
             ->where('start_time', '<=', date("Y-$nextMonth-t"))
             ->count();
+
          $data['fullMonthEvent'] = Schedule::select(DB::raw("count('id') as total,start_time"))
             ->where('start_time', '>=', date('Y-m-01'))
             ->where('start_time', '<=', date('Y-m-t'))
             ->groupBy(DB::raw("DATE_FORMAT(start_time, '%Y%m%d')"))
             ->get();
+
+        $data['fullYearMonthEvent'] = Schedule::select(DB::raw("count('id') as total,start_time"))
+            ->where('start_time', '>=', date('Y-01-01'))
+            ->where('start_time', '<=', date('Y-12-31'))
+            ->groupBy(DB::raw("DATE_FORMAT(start_time, '%Y%m')"))
+            ->get();
+
         $data['menu'] = 'Dashboard';
         return view('User.dashboard', $data);
     }

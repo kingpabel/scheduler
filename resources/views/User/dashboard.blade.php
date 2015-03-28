@@ -86,7 +86,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> This Month Day Event Total
+                            <i class="fa fa-bar-chart-o fa-fw"></i> This Month Individual Day Total Event
                         </div>
                         <div class="panel-body">
                             <div id="morris-bar-chart"></div>
@@ -95,13 +95,46 @@
                     </div>
                 </div>
             </div>
+            <div class="row" >
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Full Year Individual Month Report
+                        </div>
+                        <div class="panel-body">
+                            <div id="piechart" style="width: 100%;height: 400px;font-size: 11px;"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
 @endsection
 @section('asset')
+    {!! HTML::script('js/googleChart.js') !!}
     {!! HTML::style('css/morris.css') !!}
     {!! HTML::script('js/raphael-min.js') !!}
     {!! HTML::script('js/morris.min.js') !!}
     {{--{!! HTML::script('js/morris-data.js') !!}--}}
         <script type="text/javascript" language="javascript" class="init">
+            google.load("visualization", "1", {packages:["corechart"]});
+            google.setOnLoadCallback(drawChart);
+            function drawChart() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Month', 'Total Event'],
+                        @foreach($fullYearMonthEvent as $yearMonthEvent)
+                    ["{!! date('m-Y', strtotime($yearMonthEvent->start_time)).'('.$yearMonthEvent->total.')' !!}",     {!! $yearMonthEvent->total !!}],
+                    @endforeach
+                ]);
+
+                var options = {
+                    title: 'Full Year Individual Month Report'
+                };
+
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart.draw(data, options);
+            }
             $(function() {
                 Morris.Bar({
                     element: 'morris-bar-chart',
