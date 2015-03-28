@@ -74,6 +74,9 @@
                             <input class="form-control number" placeholder="Phone Number" name="phone" type="text" required @if(Session::has('input.phone')) value="{!! Session::get('input.phone') !!}" @endif>
                         </div>
                         <div class="form-group">
+                            Already Have an Account <a style="text-decoration: none" href="{!! URL::to('/') !!}">Login</a>
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-fw fa-plus"></i>Create</button>
                         </div>
                     </fieldset>
