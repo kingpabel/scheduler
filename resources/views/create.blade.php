@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Kingpabel Scheduler Login</title>
+    <title>Kingpabel Scheduler Create Account</title>
 
     {!! HTML::script('js/jquery-2.0.3.min.js') !!}
     <!-- Bootstrap Core CSS -->
