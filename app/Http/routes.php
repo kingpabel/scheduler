@@ -10,10 +10,15 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::group(['middleware' => 'guest'], function(){
 Route::get('/', function()
 {
     return View::make('landingPage');
 });
 
+});
 Route::controller('account','AccountController');
+
+Route::group(['middleware' => 'auth'], function(){
 Route::controller('user','UserController');
+});
