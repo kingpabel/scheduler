@@ -15,7 +15,7 @@
             <!-- /.row -->
 
             <div class="row">
-                <div class="col-lg-5 col-md-6">
+                <div class="col-lg-4 col-md-4">
                     <div class="panel panel-green">
                         <div class="panel-heading">
                             <div class="row">
@@ -37,10 +37,90 @@
                         </a>
                     </div>
                 </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">{!! $lastMonthEvent !!}</div>
+                                    <div>Event! Last Month</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{!! URL::to('user/event') !!}">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div><div class="col-lg-4 col-md-4">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">{!! $nextMonthEvent !!}</div>
+                                    <div>Event! Next Month</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{!! URL::to('user/event') !!}">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- /.row -->
+            <div class="row" >
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> This Month Day Event Total
+                        </div>
+                        <div class="panel-body">
+                            <div id="morris-bar-chart"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                </div>
+            </div>
 @endsection
 @section('asset')
+    {!! HTML::style('css/morris.css') !!}
+    {!! HTML::script('js/raphael-min.js') !!}
+    {!! HTML::script('js/morris.min.js') !!}
+    {{--{!! HTML::script('js/morris-data.js') !!}--}}
+        <script type="text/javascript" language="javascript" class="init">
+            $(function() {
+                Morris.Bar({
+                    element: 'morris-bar-chart',
+                    data: [
+                            @foreach($fullMonthEvent as $MonthEvent)
+                        {
+                        y: "{!! date('Y-m-d', strtotime($MonthEvent->start_time)) !!}",
+                        a: "{!! $MonthEvent->total !!}"
+                         },
+                        @endforeach
+                    ],
+                    xkey: 'y',
+                    ykeys: ['a'],
+                    labels: ['Total Event This Day'],
+                    hideHover: 'auto',
+                    resize: true
+                });
+            });
+        </script>
     @if(Session::get('success'))
         <script type="text/javascript" language="javascript" class="init">
             $(document).ready(function() {

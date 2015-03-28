@@ -34,7 +34,7 @@
                 @if(Session::get('error'))
                             <div class="alert alert-danger alert-dismissable">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                <i class="fa fa-info-circle"></i>{!! Session::get('error') !!}
+                                <i class="fa fa-info-circle"></i> {!! Session::get('error') !!}
                             </div>
                 @endif
                 <div class="panel-heading">
