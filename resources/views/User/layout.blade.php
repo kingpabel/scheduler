@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Kingpabel Scheduler</title>
 
     {!! HTML::script('js/jquery-2.0.3.min.js') !!}
     <!-- Bootstrap Core CSS -->
