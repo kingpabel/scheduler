@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="eamil" readonly class="form-control input" name="email" required placeholder="Email" style="width: 60%" value="{!! Auth::user()->email !!}">
+                            <input type="eamil" @if(Auth::user()->email == 'imtiazpabel@yahoo.com') readonly @endif class="form-control input" name="email" required placeholder="Email" style="width: 60%" value="{!! Auth::user()->email !!}">
                         </div>
                     </div>
                     <div class="form-group">
