@@ -59,20 +59,6 @@
             });
         })
     </script>
-
-    <!--- adsence code from google start-->
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- adsence for kingpabel blog -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-3284345266094241"
-         data-ad-slot="6634524410"
-         data-ad-format="auto"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-    <!--- adsence code from google end-->
-
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -185,6 +171,20 @@
 {!! HTML::script('js/metisMenu.min.js') !!}
 
 {!! HTML::script('js/sb-admin-2.js') !!}
+
+<!--- adsence code from google start-->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- adsence for kingpabel blog -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3284345266094241"
+     data-ad-slot="6634524410"
+     data-ad-format="auto"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<!--- adsence code from google end-->
+
 </body>
 
 </html>
