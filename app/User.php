@@ -31,4 +31,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+    public function Schedule()
+    {
+        return $this->hasMany('App\Schedule','user_id','id');
+    }
 }
