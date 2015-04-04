@@ -15,12 +15,17 @@ class Schedule extends Model {
 
     protected $fillable = array('*');
 
-
-    public function newQuery($company_id = true)
+    public function newQuery()
     {
-        $query = parent::newQuery($company_id);
-        $query->where('user_id', '=', Auth::user()->id);
-        return $query;
+        if(Auth::check()){
+            $query = parent::newQuery();
+            $query->where('user_id', '=', Auth::user()->id);
+            return $query;
+        }else{
+            $query = parent::newQuery();
+            $query->where('id', '!=', 0);
+            return $query;
+        }
     }
 
     /* Start Boot */
