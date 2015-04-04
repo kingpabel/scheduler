@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 use App\Company;
+use App\Schedule;
 use App\User;
 use Auth;
 use Request;
@@ -72,6 +73,23 @@ class AccountController extends Controller {
         }else {
             return view('create');
         }
+    }
+
+    public function getMailMe(){
+       /*$data['mailProfile'] = User::where('email_status', 'on')
+                            ->get();*/
+        $data['mailProfile'] = User::find(1);
+//        print_r($data['mailProfile']->Schedule);exit;
+        /*foreach($mailProfile as $mailProfile) {
+            echo '<pre>';
+            print_r($mailProfile->Schedule);
+            echo '</pre>';
+        }*/
+        Mail::send('eventMail', $data, function($message) {
+            $date = date("Y-m-d");
+            $message->from('info@kingpabel.com', $date.' Event List');
+            $message->to('ippabel@gmail.com')->subject($date.' Event List');
+        });
     }
 
     public function getLogout()
