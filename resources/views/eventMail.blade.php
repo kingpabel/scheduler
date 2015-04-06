@@ -25,7 +25,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($mailProfile->Schedule as $key=>$scheduleList)
+            @foreach($mailProfile as $key=>$scheduleList)
             <tr>
                 <th scope="row">{!! $key+1 !!}</th>
                 <td>{!! $scheduleList->title !!}</td>
