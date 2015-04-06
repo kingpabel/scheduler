@@ -6,6 +6,7 @@ use Auth;
 use Request;
 use Session;
 use Redirect;
+use Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
@@ -76,20 +77,22 @@ class AccountController extends Controller {
     }
 
     public function getMailMe(){
-       /*$data['mailProfile'] = User::where('email_status', 'on')
-                            ->get();*/
-        $data['mailProfile'] = User::find(1);
-//        print_r($data['mailProfile']->Schedule);exit;
-        /*foreach($mailProfile as $mailProfile) {
-            echo '<pre>';
-            print_r($mailProfile->Schedule);
-            echo '</pre>';
-        }*/
-        Mail::send('eventMail', $data, function($message) {
-            $date = date("Y-m-d");
-            $message->from('info@kingpabel.com', $date.' Event List');
-            $message->to('ippabel@gmail.com')->subject($date.' Event List');
-        });
+        $data['mailProfile'] = User::where('email_status','on')
+            ->get();
+        foreach($data['mailProfile'] as $mailProfile){
+            $eventInfo = Schedule::where('user_id', $mailProfile->id)
+                ->where('start_time', '>=', date('Y-m-d 00:00:00'))
+                ->where('start_time', '<=', date('Y-m-d 23:59:59'))
+                ->get();
+
+            Mail::send('eventMail', array('mailProfile'=> $eventInfo), function($message) use($mailProfile) {
+            $message
+                ->from('kingpabel@kingpabel.com', 'Kingpabel Scheduler')
+                ->to('ippabel@gmail.com', 'username')
+                ->subject('Kingpabel Scheduler Event'. date('Y-m-d'));
+             });
+        }
+
     }
 
     public function getLogout()
