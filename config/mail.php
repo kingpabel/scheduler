@@ -15,7 +15,7 @@ return array(
     |
     */
 
-    'driver' => 'smtp',
+    'driver' => 'mail',
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
     |
     */
 
-    'host' => 'localhost',
+    'host' => 'smtp.google.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return array(
     */
 
 //	'from' => array('address' => null, 'name' => null),
-    'from' => array('address' => 'shams_sadek@yahoo.com', 'name' => 'Shams Sadek'),
+    'from' => array('address' => 'ippabel@gmail.com', 'name' => 'Shams Sadek'),
 
     /*
     |--------------------------------------------------------------------------
